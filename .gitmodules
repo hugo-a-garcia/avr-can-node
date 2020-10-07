@@ -1,0 +1,9 @@
+[submodule "libcanard"]
+	path = libcanard
+	url = https://github.com/UAVCAN/libcanard.git
+[submodule "avr-can-lib"]
+	path = avr-can-lib
+	url = https://github.com/dergraaf/avr-can-lib.git
+[submodule "avr/avr-can-lib"]
+	path = avr/avr-can-lib
+	url = https://github.com/dergraaf/avr-can-lib.git
