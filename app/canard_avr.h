@@ -8,14 +8,31 @@
 #ifndef CANARD_AVR_H
 #define CANARD_AVR_H
 
-#include <canard.h>
+#include "canard.h"
 
 #ifdef __cplusplus
 extern "C"
 {
 #endif
 
-/**
+    // typedef struct
+    // {
+
+    //     uint32_t id; //!< ID der Nachricht (11 oder 29 Bit)
+    //     struct
+    //     {
+    //         int rtr : 1;      //!< Remote-Transmit-Request-Frame?
+    //         int extended : 1; //!< extended ID?
+    //     } flags;
+
+    //     uint8_t length;  //!< Anzahl der Datenbytes
+    //     uint8_t data[8]; //!< Die Daten der CAN Nachricht
+
+    //     //uint16_t timestamp;
+
+    // } can_t;
+
+    /**
  * \ingroup   communication
  * \defgroup  canard_avr_interface Libcanard CAN Interface for AVR microcontrollers
  * \brief     Interface for Libcanard CAN interaction with AVR microcontrollers
@@ -26,8 +43,7 @@ extern "C"
  * \version   0.1
  */
 
-
-/**
+    /**
  * @ingroup canard_avr_interface
  * @brief Initialize CAN interface on AVR microcontroller.
  * @warning Enables interrupts!
@@ -36,9 +52,9 @@ extern "C"
  *
  * @retval     0        Successfully initialized.
  */
-int canardAVRInit(uint32_t bitrate);
+    int canardAVRInit(uint32_t bitrate);
 
-/**
+    /**
  * @ingroup canard_avr_interface
  * @brief Deinitialize CAN interface on AVR microcontroller.
  * @warning Not implemented
@@ -46,11 +62,11 @@ int canardAVRInit(uint32_t bitrate);
  * @retval 1     Initialisation successful
  * @retval -1    Error, bitrate not supported
  */
-int canardAVRClose(void);
+    int canardAVRClose(void);
 
-/**
+    /**
  * @ingroup canard_avr_interface
- * @brief Transmits a CanardCANFrame to the CAN device.
+ * @brief Transmits a CanardFrame to the CAN device.
  *
  * @param [in] frame  Canard CAN frame which contains the data to send
  *
@@ -58,11 +74,11 @@ int canardAVRClose(void);
  * @retval     -1     Error, data could not be sent
  * @retval     1      Data sent successful
  */
-int canardAVRTransmit(const CanardCANFrame* frame);
+    int canardAVRTransmit(const CanardFrame *frame);
 
-/**
+    /**
  * @ingroup canard_avr_interface
- * @brief Receives a CanardCANFrame from the CAN device.
+ * @brief Receives a CanardFrame from the CAN device.
  *
  * @param [out] out_frame  Canard CAN frame which contains data received
  *
@@ -70,9 +86,9 @@ int canardAVRTransmit(const CanardCANFrame* frame);
  * @retval      -1         Error, data could not be read
  * @retval      1          Data read successful
  */
-int canardAVRReceive(CanardCANFrame* out_frame);
+    int canardAVRReceive(CanardFrame *out_frame);
 
-/**
+    /**
  * @ingroup canard_avr_interface
  * @brief Set hardware acceptance filters for specific node ID
  *
@@ -81,7 +97,7 @@ int canardAVRReceive(CanardCANFrame* out_frame);
  * @retval      -1         Error, filters could no be set
  * @retval      1          Set filter successful
  */
-int canardAVRConfigureAcceptanceFilters(uint8_t node_id);
+    int canardAVRConfigureAcceptanceFilters(uint8_t node_id);
 
 #ifdef __cplusplus
 }
