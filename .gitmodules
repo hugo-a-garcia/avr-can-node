@@ -1,3 +1,0 @@
-[submodule "avr-can-lib"]
-	path = avr-can-lib
-	url = https://github.com/dergraaf/avr-can-lib.git
